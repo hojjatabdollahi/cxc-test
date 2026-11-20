@@ -1,0 +1,32 @@
+name: bundle
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@v4
+
+      # The importer expects the metainfo file, config/ and data/ at the zip root and rejects symlinks.
+      - name: Zip the bundle
+        run: zip -r -X system95.zip io.github.hojjatabdollahi.cxc-system95.metainfo.xml config data LICENSE NOTICE.md LICENSES
+
+      # One release per x-cosmic-version. Pushing without bumping the version replaces the zip
+      # on the existing release, so releases/latest always matches main.
+      - name: Publish release
+        run: |
+          tag="v$(grep -oP '(?<=key="x-cosmic-version">)[^<]+' io.github.hojjatabdollahi.cxc-system95.metainfo.xml)"
+          if gh release view "$tag" >/dev/null 2>&1; then
+            gh release upload "$tag" system95.zip --clobber
+          else
+            gh release create "$tag" system95.zip --title "System95 $tag" \
+              --notes "COSMIC theme bundle. Import system95.zip under Settings > Desktop > Appearance."
+          fi

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="generic">
+  <id>io.github.hojjatabdollahi.cxc-system95</id>
+  <name>System95</name>
+  <summary>Cosmic theme bundle</summary>
+  <description>
+    <p>A COSMIC theme bundle carrying the complete look for one mode: the theme, its builder settings, and the background it is shown with.</p>
+  </description>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>GPL-3.0-or-later</project_license>
+  <icon type="stock">preferences-other-symbolic</icon>
+  <custom>
+    <value key="x-cosmic-format">1</value>
+    <value key="x-cosmic-version">1.0.0</value>
+    <value key="x-cosmic-slug">system95</value>
+    <value key="x-cosmic-mode">light</value>
+    <value key="x-cosmic-parts">Theme,Builder,Background</value>
+    <value key="x-cosmic-assets">[(id:"io.github.hojjatabdollahi.cxc-system95.wallpapers",kind:Wallpaper,path:"data/cosmic/system95/wallpapers",name:"system95"),(id:"io.github.hojjatabdollahi.cxc-system95.icons",kind:IconTheme,path:"data/icons/io.github.hojjatabdollahi.cxc-system95.icons",name:"Chicago95"),(id:"io.github.hojjatabdollahi.cxc-system95.fonts.w95fa",kind:Font,path:"data/fonts/io.github.hojjatabdollahi.cxc-system95.fonts.w95fa",name:"W95FA")]</value>
+  </custom>
+</component>
